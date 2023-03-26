@@ -1,7 +1,7 @@
-package test.java;
+package test.first_week;
 
-import first_week.Bird;
-import first_week.Goat;
+import reflection.Bird;
+import reflection.Goat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,17 +17,17 @@ public class TestReflection {
     @Test
     @DisplayName("Check if class name is first_week.Goat")
     public void test1() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("first_week.Goat");
+        Class<?> clazz = Class.forName("reflection.Goat");
 
         assertEquals("Goat", clazz.getSimpleName());
-        assertEquals("first_week.Goat", clazz.getName());
-        assertEquals("first_week.Goat", clazz.getCanonicalName());
+        assertEquals("reflection.Goat", clazz.getName());
+        assertEquals("reflection.Goat", clazz.getCanonicalName());
     }
 
     @Test
     public void givenClass_whenRecognisesModifiers_thenCorrect() throws ClassNotFoundException {
-        Class<?> goatClass = Class.forName("first_week.Goat");
-        Class<?> animalClass = Class.forName("first_week.Animal");
+        Class<?> goatClass = Class.forName("reflection.Goat");
+        Class<?> animalClass = Class.forName("reflection.Animal");
 
         int goatMods = goatClass.getModifiers();
         int animalMods = animalClass.getModifiers();
@@ -43,7 +43,7 @@ public class TestReflection {
         Class<?> goatClass = goat.getClass();
         Package pkg = goatClass.getPackage();
 
-        assertEquals("first_week", pkg.getName());
+        assertEquals("reflection", pkg.getName());
     }
 
     @Test
@@ -61,8 +61,8 @@ public class TestReflection {
     @Test
     @DisplayName("Get interfaces names of a class")
     public void givenClass_whenGetsInterfaces_thenCorrect() throws ClassNotFoundException {
-        Class<?> goat = Class.forName("first_week.Goat");
-        Class<?> animal = Class.forName("first_week.Animal");
+        Class<?> goat = Class.forName("reflection.Goat");
+        Class<?> animal = Class.forName("reflection.Animal");
 
         Class<?>[] goatInterfaces = goat.getInterfaces();
         Class<?>[] animalInterfaces = animal.getInterfaces();
@@ -73,7 +73,7 @@ public class TestReflection {
 
     @Test
     public void givenClass_whenGetsFields_thenCorrect() throws ClassNotFoundException {
-        Class<?> animalClass = Class.forName("first_week.Animal");
+        Class<?> animalClass = Class.forName("reflection.Animal");
         Field[] fields = animalClass.getDeclaredFields();
 
         List<String> actualFields = getFieldNames(fields);
@@ -91,7 +91,7 @@ public class TestReflection {
 
     @Test
     public void givenClass_whenGetsAllConstructors_thenCorrect() throws ClassNotFoundException {
-        Class<?> birdClass = Class.forName("first_week.Bird");
+        Class<?> birdClass = Class.forName("reflection.Bird");
         Constructor<?>[] constructors = birdClass.getConstructors();
 
         assertEquals(3, constructors.length);
@@ -99,7 +99,7 @@ public class TestReflection {
 
     @Test
     public void givenClass_whenGetsEachConstructorByParamTypes_thenCorrect() throws ClassNotFoundException, NoSuchMethodException {
-        Class<?> birdClass = Class.forName("first_week.Bird");
+        Class<?> birdClass = Class.forName("reflection.Bird");
 
         Constructor<?> cons1 = birdClass.getConstructor();
         Constructor<?> cons2 = birdClass.getConstructor(String.class);
@@ -109,7 +109,7 @@ public class TestReflection {
     @Test
     public void givenClass_whenInstantiatesObjectsAtRuntime_thenCorrect() throws ClassNotFoundException,
             NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class<?> birdClass = Class.forName("first_week.Bird");
+        Class<?> birdClass = Class.forName("reflection.Bird");
         Constructor<?> cons1 = birdClass.getConstructor();
         Constructor<?> cons2 = birdClass.getConstructor(String.class);
         Constructor<?> cons3 = birdClass.getConstructor(String.class,
@@ -129,7 +129,7 @@ public class TestReflection {
 
     @Test
     public void givenClassField_whenSetsAndGetsValue_thenCorrect() throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class<?> birdClass = Class.forName("first_week.Bird");
+        Class<?> birdClass = Class.forName("reflection.Bird");
         Bird bird = (Bird) birdClass.getConstructor().newInstance();
         Field field = birdClass.getDeclaredField("walks");
         field.setAccessible(true);
@@ -146,7 +146,7 @@ public class TestReflection {
     @Test
     @DisplayName("Get declared methods names for Goat class")
     public void test2() throws ClassNotFoundException {
-        Class<?> goat = Class.forName("first_week.Goat");
+        Class<?> goat = Class.forName("reflection.Goat");
         Method[] goatMethods = goat.getDeclaredMethods();
         String[] goatMethodNames = new String[goatMethods.length];
         for (int i = 0; i < goatMethods.length; i++) {

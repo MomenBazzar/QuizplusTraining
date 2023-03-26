@@ -1,4 +1,4 @@
-package first_week;
+package reflection;
 
 public class Bird extends Animal {
     private boolean walks;
@@ -9,7 +9,7 @@ public class Bird extends Animal {
 
     public Bird(String name, boolean walks) {
         super(name);
-//        setWalks(walks);
+        setWalks(walks);
     }
 
     public Bird(String name) {
@@ -34,7 +34,7 @@ public class Bird extends Animal {
         return walks;
     }
 
-//    public void setWalks(boolean walks) {
-//        this.walks = walks;
-//    }
+    public void setWalks(boolean walks) {
+        this.walks = walks;
+    }
 }

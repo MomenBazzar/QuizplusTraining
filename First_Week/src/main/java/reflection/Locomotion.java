@@ -1,4 +1,4 @@
-package first_week;
+package reflection;
 
 public interface Locomotion {
     String getLocomotion();
